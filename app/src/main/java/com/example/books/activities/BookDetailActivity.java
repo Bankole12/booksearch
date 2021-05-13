@@ -26,11 +26,15 @@ public class BookDetailActivity extends AppCompatActivity {
         // Use the book to populate the data into our views
         Book book = (Book) getIntent().getSerializableExtra(BookActivity.BOOK_DETAIL_KEY);
         String publish = "Published in " + book.getPublication();
+        String author = "Authured by " + book.getAuthor();
         this.setTitle(book.getTitle());
         // Populate data
-        Picasso.with(BookDetailActivity.this).load(Uri.parse(book.getLargeCoverUrl())).error(R.drawable.ic_nocover).into(ivBookCover);
+        Picasso.with(BookDetailActivity.this).load(Uri.parse(book.getLargeCoverUrl()))
+                .error(R.drawable.ic_nocover)
+                .placeholder( R.drawable.progress_animation )
+                .into(ivBookCover);
         tvTitle.setText(book.getTitle());
-        tvAuthor.setText(book.getAuthor());
+        tvAuthor.setText(author);
         tvBdPublished.setText(publish);
         tvBdDescription.setText(book.getDescription());
     }

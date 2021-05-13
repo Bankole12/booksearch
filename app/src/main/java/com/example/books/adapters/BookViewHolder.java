@@ -39,6 +39,7 @@ public class BookViewHolder extends RecyclerView.ViewHolder{
             Picasso.with(context)
                     .load(Uri.parse(dm.getCoverUrl()))
                     .placeholder(R.drawable.ic_nocover)
+                    .fit()
                     .error(R.drawable.ic_nocover)
                     .into(cover);
         }
