@@ -29,7 +29,7 @@ public class BookClient {
         }
     }
 
-    // Method for accessing books API to get publisher and no. of pages in a book.
+    // Method for accessing books API in future if further details of book is required.
     public void getExtraBookDetails(String openLibraryId, JsonHttpResponseHandler handler) {
         String url = getApiUrl("books/");
         client.get(url + openLibraryId + ".json", handler);

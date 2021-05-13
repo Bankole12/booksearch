@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Books</string>
     <string name="title_activity_book_detail">BookDetailActivity</string>
-    <string name="no_books">No books to display please search for a book.</string>
+    <string name="no_books">No books to display. Please search for a book.</string>
 </resources>

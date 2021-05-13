@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".activities.BookDetailActivity">
 
@@ -14,34 +15,44 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="10dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="8dp">
 
-            <ImageView
-                android:id="@+id/ivBdBookCover"
-                android:layout_marginTop="8dp"
-                android:layout_width="280dp"
-                android:layout_height="280dp" />
+                <ImageView
+                    android:id="@+id/ivBdBookCover"
+                    android:layout_width="240dp"
+                    android:layout_height="280dp"
+                    android:layout_margin="10dp"/>
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvBdTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:layout_marginTop="8dp"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp" />
+                android:paddingRight="10dp"
+                android:textAlignment="center"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvBdAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:textAlignment="center"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvBdPublishYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:layout_marginTop="8dp"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvBdDescription"

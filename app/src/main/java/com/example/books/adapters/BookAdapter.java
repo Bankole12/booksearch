@@ -16,9 +16,9 @@ import java.util.ArrayList;
 
 public class BookAdapter extends RecyclerView.Adapter<BookViewHolder> {
     // View lookup cache
-    private ArrayList<Book> dataModelList;
-    private Context mContext;
-    private final IOnBookItemClickListener listener;
+    private final ArrayList<Book> dataModelList;
+    private final Context mContext;
+    public final IOnBookItemClickListener listener;
 
     public BookAdapter(ArrayList<Book> modelList, Context context, IOnBookItemClickListener listener) {
         dataModelList = modelList;
@@ -44,7 +44,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookViewHolder> {
         holder.bookmark.setOnClickListener(v -> listener.onBookmarkClick(dataModelList.get(position),
                 holder));
 
-        holder.cover.setOnClickListener(v -> listener.onImageClick(dataModelList.get(position)));
+        holder.mView.setOnClickListener(v -> listener.onImageClick(dataModelList.get(position)));
 
         holder.bindData(dataModelList.get(position), mContext);
     }

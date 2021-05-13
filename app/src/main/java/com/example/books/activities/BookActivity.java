@@ -33,6 +33,7 @@ import java.util.ArrayList;
 
 
 public class BookActivity extends AppCompatActivity {
+    //Variable declaration
     private static final String TAG = "BOOK ACTIVITY";
     public static final String BOOK_DETAIL_KEY = "book";
     private MaterialCardView noBooksCard;
@@ -51,7 +52,7 @@ public class BookActivity extends AppCompatActivity {
         booksRecyclerView = findViewById(R.id.trans_recycler_view);
         mLayoutManager = new LinearLayoutManager(this); //this
         booksRecyclerView.setLayoutManager(mLayoutManager);
-        progress = new ProgressDialog(this);
+        progress = new ProgressDialog(this, R.style.MyAlertDialogStyle);
 
         boolean noTransactions = bookData.isEmpty();
         int transVisibility = noTransactions ? View.GONE : View.VISIBLE;
@@ -60,7 +61,9 @@ public class BookActivity extends AppCompatActivity {
         noBooksCard.setVisibility(noTransVisibility);
         booksRecyclerView.setVisibility(transVisibility);
 
+        //Listener for item click in the image view
         listener = new IOnBookItemClickListener() {
+            //Bookmark button click implementation
             @Override
             public void onBookmarkClick(Book book, BookViewHolder holder) {
                 Toast.makeText(BookActivity.this, "Book marked", Toast.LENGTH_LONG)
@@ -70,6 +73,7 @@ public class BookActivity extends AppCompatActivity {
                         .getColor(R.color.black));
             }
 
+            //image click implementation for book's detail view
             @Override
             public void onImageClick(Book book){
                 Intent intent = new Intent(BookActivity.this, BookDetailActivity.class);
@@ -87,6 +91,7 @@ public class BookActivity extends AppCompatActivity {
         showDialog();
         BookClient client = new BookClient();
         try {
+            //Make network request
             client.getBooks(query, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -101,8 +106,8 @@ public class BookActivity extends AppCompatActivity {
                             docs = response.getJSONArray("docs");
                             // Parse json array into array of model objects
                             final ArrayList<Book> books = Book.fromJson(docs);
-                            // Remove all books from the adapter
 
+                            //Populating the recyclerview
                             booksAdapter = new BookAdapter(books, BookActivity.this, listener);
                             booksRecyclerView.setAdapter(booksAdapter);
 
@@ -186,7 +191,6 @@ public class BookActivity extends AppCompatActivity {
         progress.setMessage("Wait while loading...");
         progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
         progress.show();
-
     }
 
     private void closeDialog(){

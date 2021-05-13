@@ -28,10 +28,12 @@ public class BookDetailActivity extends AppCompatActivity {
         String publish = "Published in " + book.getPublication();
         String author = "Authured by " + book.getAuthor();
         this.setTitle(book.getTitle());
-        // Populate data
+
+        // Load image
         Picasso.with(BookDetailActivity.this).load(Uri.parse(book.getLargeCoverUrl()))
                 .error(R.drawable.ic_nocover)
                 .placeholder( R.drawable.progress_animation )
+                .fit()
                 .into(ivBookCover);
         tvTitle.setText(book.getTitle());
         tvAuthor.setText(author);
